@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10-Mar-2021, 16:30:32
+    Author     : ab811
+*/
+
+
+
+.menu{
+    
+}
+
+.content-area{
+    margin-bottom: 10px;
+}
+
+.content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: 500px;
+}
+
+.sidebar{
+    width: 24%;
+    min-height: 300px;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    float: right;
+}
+
+.notification {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}

@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon-32x32.png']}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/fontawesome.min.css"/>
+        <h:outputStylesheet name="/css/signin.css"/>
+        <h:outputStylesheet name="/css/jquery.dataTables.min.css"/>
+        <h:outputScript name="/js/jquery.min.js"/>
+        <h:outputScript name="/js/bootstrap.min.js"/>
+        <h:outputScript name="/js/bootstrap.js"/>
+        <h:outputScript name="/js/jquery.dataTables.min.js"/>
+        <title>PayME: Administrator Transactions</title>
+    </h:head>
+    
+    
+        
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-12 menu">
+                    
+                    <ui:insert name="menu">
+                        
+                        <nav class="navbar navbar-inverse">
+                            
+                            <div class="container-fluid">
+                              <div class="navbar-header">
+                                <a class="navbar-brand" href="#">PayME</a>
+                              </div>
+
+                              <ul class="nav navbar-nav">
+                                  <li><h:link outcome="home">Home</h:link></li>
+                                <li class="active"><h:link outcome="transactions">Transactions</h:link></li>
+                                <li><h:link outcome="users">Manage Users</h:link></li>
+                                <li><h:link outcome="register">Register Users</h:link></li>
+                              </ul>
+                                
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#" onclick="invoke();"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
+                                
+                                
+                            </ul>
+                                
+                            </div>
+                            
+                        </nav>
+                        
+                    </ui:insert>
+                
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 content-area">
+                    
+                    <div class="content">
+                    
+                        <ui:insert name="content">
+                            
+                            
+                            <div class="container" >
+                                
+                                <div class="row">
+                                    <div class="col-sm-9 col-sm-offset-2" style="">
+                                        
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading"><h4>This is the history of all past users transactions.</h4></div>
+                                            <div class="panel-body">
+                                                
+                                                 
+        
+                                                <h:dataTable id="transactions_table" class="table tab" value="#{administratorBean.usersTransactions}" var="transactions">
+                                                    <h:column>    				
+                                                        <f:facet name="header">Date</f:facet>    				
+                                                            #{transactions[5]}
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Transaction_Id</f:facet>
+                                                            #{transactions[0]}
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Type</f:facet>
+                                                            #{transactions[1]}
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Amount</f:facet>
+                                                            #{transactions[2]}
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">From</f:facet>
+                                                            #{transactions[3]}
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">To</f:facet>
+                                                            #{transactions[4]}
+                                                    </h:column>
+                                                </h:dataTable>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    
+                                    </div>
+                                
+                                    
+                                </div>
+                                
+                                
+                            </div>
+                            
+                        </ui:insert>
+                        
+                    </div>
+                    
+                </div>
+ 
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 footer">
+                        
+                        <ui:insert name="footer">
+                            
+                            <nav class="navbar navbar-inverse">
+                               
+                                <div class="container">
+                                  <div class="navbar-text float-left copyright">
+                                    <p><span class="align-baseline">&copy; 2021 Web Applications &amp; Services - Adem Bencheikh</span></p>
+                                  </div>
+                                </div>
+                        
+                            </nav>
+                            
+                        </ui:insert>
+                        
+                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <h:form>
+            <h:commandScript id="submit" 
+                             name="jsFunction"
+                             action="#{logoutBean.logout()}"/>
+        </h:form>
+
+        <script>
+            $(document).ready( function () {
+                $('#transactions_table').DataTable();
+            } );
+            
+            function invoke()
+               {
+                    jsFunction();
+               }
+        </script>
+    
+</html>
+

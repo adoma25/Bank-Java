@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon-32x32.png']}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/fontawesome.min.css"/>
+        <h:outputStylesheet name="/css/signin.css"/>
+        <h:outputScript name="/js/jquery.min.js"/>
+        <h:outputScript name="/js/bootstrap.min.js"/>
+        <h:outputScript name="/js/bootstrap.js"/>
+        <title>PayME: Send &amp; Receive Money Online</title>
+    </h:head>
+    <h:body>
+        
+        
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-12 menu">
+                    
+                    <ui:insert name="menu">
+                        
+                        <nav class="navbar navbar-inverse">
+                            
+                            <div class="container-fluid">
+                              <div class="navbar-header">
+                                <a class="navbar-brand" href="#">PayME</a>
+                              </div>
+
+                              <ul class="nav navbar-nav navbar-right">
+                                <li><h:link outcome="signup"><span class="glyphicon glyphicon-user" ></span> Sign Up</h:link></li>
+                                <li><h:link outcome="login"><span class="glyphicon glyphicon-log-in"></span> Login</h:link></li>
+                              </ul>
+                            </div>
+                            
+                        </nav>
+                        
+                    </ui:insert>
+                
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 content-area">
+                    
+                    <div class="content">
+                    
+                        <ui:insert name="content">
+                           
+                            
+                        </ui:insert>
+                        
+                    </div>
+                    
+                </div>
+ 
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 footer">
+                        
+                        <ui:insert name="footer">
+                            
+                            <nav class="navbar navbar-inverse">
+                               
+                                <div class="container">
+                                  <div class="navbar-text float-left copyright">
+                                    <p><span class="align-baseline">&copy; 2021 Web Applications &amp; Services - Adem Bencheikh</span></p>
+                                  </div>
+                                </div>
+                        
+                            </nav>
+                            
+                        </ui:insert>
+                        
+                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+    </h:body>
+
+</html>

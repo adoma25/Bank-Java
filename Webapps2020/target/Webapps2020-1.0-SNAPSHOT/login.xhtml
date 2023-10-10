@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/fontawesome.min.css"/>
+        <h:outputStylesheet name="/css/signin.css"/>
+        <h:outputScript name="/js/jquery.min.js"/>
+        <h:outputScript name="/js/bootstrap.min.js"/>
+        <h:outputScript name="/js/bootstrap.js"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon-32x32.png']}"/>
+        <title>PayME: Login</title>
+    </h:head>
+    <h:body>
+        
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-12 menu">
+                    
+                    <ui:insert name="menu">
+                        
+                        <nav class="navbar navbar-inverse">
+                            
+                            <div class="container-fluid">
+                              <div class="navbar-header">
+                                <a class="navbar-brand" href="#">PayME</a>
+                              </div>
+
+                              <ul class="nav navbar-nav navbar-right">
+                                <li><h:link outcome="signup"><span class="glyphicon glyphicon-user" ></span> Sign Up</h:link></li>
+                                <li class="active"><h:link outcome="login"><span class="glyphicon glyphicon-log-in"></span> Login</h:link></li>
+                              </ul>
+                            </div>
+                            
+                        </nav>
+                        
+                    </ui:insert>
+                
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 content-area">
+                    
+                    <div class="content">
+                    
+                        <ui:insert name="content">
+                            
+                            <form class="form-signin" action="j_security_check" method="POST">
+                                
+                                
+      
+                                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                                
+                                <label for="inputUsername" class="sr-only">Username</label>
+                                
+                                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="true" name="j_username"/>
+                                
+                                <label for="inputPassword" class="sr-only">Password</label>
+                                
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="true" name="j_password"/>
+                                
+                                <div class="checkbox mb-3">
+                                    
+                                  <label>
+                                    <input type="checkbox" value="remember-me"/> Remember me
+                                  </label>
+                                    
+                                </div>
+                                
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                                
+                            </form>
+                            
+                        </ui:insert>
+                        
+                    </div>
+                    
+                </div>
+ 
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 footer">
+                        
+                        <ui:insert name="footer">
+                            
+                            <nav class="navbar navbar-inverse">
+                               
+                                <div class="container">
+                                  <div class="navbar-text float-left copyright">
+                                    <p><span class="align-baseline">&copy; 2021 Web Applications &amp; Services - Adem Bencheikh</span></p>
+                                  </div>
+                                </div>
+                        
+                            </nav>
+                            
+                        </ui:insert>
+                        
+                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+        
+    </h:body>
+
+</html>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="users/settings/personal_details.xhtml" x="954" y="1180" zoom="true"/>
+        <Node id="index.xhtml" x="1645" y="504" zoom="true"/>
+        <Node id="newjsf.xhtml" x="173" y="594" zoom="true"/>
+        <Node id="users/settings/settings.xhtml" x="1505" y="851" zoom="true"/>
+        <Node id="users/balance.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="users/settings/account_settings.xhtml" x="766" y="1028" zoom="true"/>
+        <Node id="admins/home.xhtml" x="236" y="825" zoom="true"/>
+        <Node id="admins/manage.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="admin/home.xhtml" x="1938" y="-10" zoom="true"/>
+        <Node id="signup.xhtml" x="3096" y="32" zoom="true"/>
+        <Node id="admins/users.xhtml" x="436" y="1003" zoom="true"/>
+        <Node id="login.xhtml" x="348" y="32" zoom="true"/>
+        <Node id="users/banks.xhtml" x="3340" y="32" zoom="true"/>
+        <Node id="users/send.xhtml" x="581" y="32" zoom="true"/>
+        <Node id="users/transactions.xhtml" x="34" y="32" zoom="true"/>
+        <Node id="admins/transactions.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="users/settings/notifications_settings.xhtml" x="989" y="856" zoom="true"/>
+        <Node id="users/home.xhtml" x="2263" y="653" zoom="true"/>
+        <Node id="admins/register.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="users/request.xhtml" x="2211" y="1147" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

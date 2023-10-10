@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon-32x32.png']}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/fontawesome.min.css"/>
+        <h:outputStylesheet name="/css/signin.css"/>
+        <h:outputScript name="/js/jquery.min.js"/>
+        <h:outputScript name="/js/bootstrap.min.js"/>
+        <h:outputScript name="/js/bootstrap.js"/>
+        <title>PayME: Settings</title>
+    </h:head>
+    
+    
+        
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-12 menu">
+                    
+                    <ui:insert name="menu">
+                        
+                        <nav class="navbar navbar-inverse">
+                            
+                            <div class="container-fluid">
+                              <div class="navbar-header">
+                                <h:link class="navbar-brand" outcome="home">PayME</h:link>
+                              </div>
+
+                              <ul class="nav navbar-nav">
+                                  <li><h:link outcome="home">Home</h:link></li>
+                                <li class="dropdown">
+                                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Wallet
+                                  <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                      <li><h:link outcome="balance">PayME Balance</h:link></li>
+                                      <li><a href="#">Bank Accounts</a></li>
+                                        
+                                  </ul>
+                                </li>
+                                <li><h:link outcome="transactions">Transactions</h:link></li>
+                                <li><h:link outcome="send">Send Money</h:link></li>
+                                <li><h:link outcome="request">Request Money</h:link></li>
+                              </ul>
+                                
+                                
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-bell" ></span></a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1">Recent Notifications</a></li>
+                                            <li role="presentation" class="divider"></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><h:link outcome="transactions"><h:outputText value="#{userService.notifications[0] == '' ? 'No new notifications' : userService.notifications[0]}"></h:outputText></h:link></a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><h:link outcome="transactions"><h:outputText value="#{userService.notifications[0] == '' ? '' : userService.notifications[1]}"></h:outputText></h:link></a></li>
+                                            <li role="presentation" class="divider"></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><h:link outcome="transactions">View all transactions</h:link></a></li>
+                                        </ul>
+                                    </li>
+                                <li class="active"><a href="#"><span class="glyphicon glyphicon-cog" ></span></a></li>
+                                <li><a href="#" onclick="invoke();"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
+                                
+                                
+                            </ul>
+                                
+                            </div>
+                            
+                        </nav>
+                        
+                    </ui:insert>
+                
+                </div>
+                
+            </div>
+            
+            <div class="row" >
+                
+                <div class="col-md-8 col-md-offset-2" style="padding-top: 0px;">
+                    
+                    <ui:insert name="menu">
+                        
+                        <nav class="navbar navbar-inverse">
+                            
+                            <div class="container-fluid">
+                              
+
+                              <ul class="nav navbar-nav">
+                                    <li class="active"><h:link outcome="settings">Personal Details</h:link></li>
+                                    <li><h:link outcome="account">Account Settings</h:link></li>
+                                    <li><h:link outcome="notifications">Notifications Settings</h:link></li>
+                              </ul>
+                                
+                                
+                            
+                                
+                            </div>
+                            
+                        </nav>
+                        
+                        <div class="row">
+                            
+                            <div class="col-sm-4 col-md-offset-1" style="">
+                                
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Personal Details</div>
+                                    <div class="panel-body" id="">
+                                        
+                                        
+                                        <div class="panel-heading" id="personalDetailsInformationDisplay" style="display: block;">
+                                            <h5><p><h:outputText value="#{userService.userFullName}"></h:outputText></p></h5>
+                                            <h5><p><h:outputText value="#{userService.userDateOfBirth}"></h:outputText></p></h5>
+                                            <div style="float: right;"><button type="button" class="btn btn-link" onclick="show('personalDetailsInformationChange'), hide('personalDetailsInformationDisplay')">Edit <span class="glyphicon glyphicon-menu-right" ></span></button></div>
+                                            
+                                            
+                                                
+                                        </div>
+                                        
+                                        <div id="personalDetailsInformationChange" style="display: none;">
+                                            <div class="row" style="float: left;"><button type="button" class="btn btn-link" onclick="show('personalDetailsInformationDisplay'), hide('personalDetailsInformationChange')"><span class="glyphicon glyphicon-menu-left" ></span>Back</button></div>
+                                            <div class="panel-body"  >
+                                                <br/>
+                                                <div class="row">
+                                                    <h:form>
+                                                        <h:outputLabel for="fullName" value="Full Name"/>
+                                                        <h:inputText class="form-control" id="fullName" value="#{userService.fullName}"></h:inputText>
+
+                                                        <h:outputLabel for="dateOfBirth" value="Date of Birth"/>
+                                                        <h:inputText class="form-control" id="dateOfBirth" value="#{userService.dob}"></h:inputText>
+                                                        
+                                                        
+                                                        <br/>
+                                                        <h:commandButton class="btn btn-primary" id="updatePersonalDetails" title="Update Address" label="Update Personal details" value="Update Details" type="Submit" action="#{userService.updateUserPersonalDetails()}"></h:commandButton>
+                                                    </h:form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Contact Details</div>
+                                    <div class="panel-body">
+                                        
+                                        <div class="panel-heading" id="contactDetailsInformationDisplay" style="display: block;">
+                                            <h5><p><h:outputText value="#{userService.userEmailAddress}"></h:outputText></p></h5>
+                                            <h5><p><h:outputText value="#{userService.userPhoneNumber}"></h:outputText></p></h5>
+                                            <div style="float: right;"><button type="button" class="btn btn-link" onclick="show('contactDetailsInformationChange'), hide('contactDetailsInformationDisplay')">Edit <span class="glyphicon glyphicon-menu-right" ></span></button></div>
+                                        </div>
+                                        
+                                        <div id="contactDetailsInformationChange" style="display: none;">
+                                            <div class="row" style="float: left;"><button type="button" class="btn btn-link" onclick="show('contactDetailsInformationDisplay'), hide('contactDetailsInformationChange')"><span class="glyphicon glyphicon-menu-left" ></span>Back</button></div>
+                                            <div class="panel-body"  >
+                                                <br/>
+                                                <div class="row">
+                                                    <h:form>
+                                                        <h:outputLabel for="emailAddress" value="Email Addresssss"/>
+                                                        <h:inputText class="form-control" id="emailAddress" value="#{userService.emailAddress}"></h:inputText>
+
+                                                        <h:outputLabel for="phoneNumber" value="Phone Numberrr"/>
+                                                        <h:inputText class="form-control" id="phoneNumber" value="#{userService.phoneNumber}"></h:inputText>
+                                                        <br/>
+                                                        <h:commandButton class="btn btn-primary" id="updateContact" title="Update Contact" label="Update Contact" value="Update Contact" type="Submit" action="#{userService.updateContactDetails()}"></h:commandButton>
+                                                    </h:form>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-5 col-sm-offset-1" style="">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Billing Address</div>
+                                    <div class="panel-body" id="">
+                                        
+                                        <div class="panel-heading" id="billingAddressInformationDisplay" style="display: block;">
+                                            <div><h:outputText class="" value="#{userService.userAddress.houseNumber}"> </h:outputText></div>
+                                            <div><h:outputText class="" value="#{userService.userAddress.addressLine}"> </h:outputText></div>
+                                            <div><h:outputText class="" value="#{userService.userAddress.postCode}"> </h:outputText></div>
+                                            <div><h:outputText class="" value="#{userService.userAddress.city}"> </h:outputText></div>
+                                            <div><h:outputText class="" value="#{userService.userAddress.country}"> </h:outputText></div>
+                                            <div style="float: right;"><button type="button" class="btn btn-link" onclick="show('billingAddressInformationChange'), hide('billingAddressInformationDisplay')">Edit <span class="glyphicon glyphicon-menu-right" ></span></button></div>
+                                        </div>
+                                        
+                                        <div id="billingAddressInformationChange" style="display: none;">
+                                            <div class="row" style="float: left;"><button type="button" class="btn btn-link" onclick="show('billingAddressInformationDisplay'), hide('billingAddressInformationChange')"><span class="glyphicon glyphicon-menu-left" ></span>Back</button></div>
+                                            <div class="panel-body"  >
+                                                <br/>
+                                                <div class="row">
+                                                    <h:form>
+                                                        <h:outputLabel for="houseNumber" value="House Number"/>
+                                                        <h:inputText class="form-control" id="houseNumber" value="#{userService.houseNo}"></h:inputText>
+
+                                                        <h:outputLabel for="addressLine" value="Address Line"/>
+                                                        <h:inputText class="form-control" id="addressLine" value="#{userService.addressLine}"></h:inputText>
+
+                                                        <h:outputLabel for="postCode" value="Post Code"/>
+                                                        <h:inputText class="form-control" id="postCode" value="#{userService.postCode}"></h:inputText>
+
+                                                        <h:outputLabel for="city" value="City"/>
+                                                        <h:inputText class="form-control" id="city" value="#{userService.city}"></h:inputText>
+
+                                                        <h:outputLabel for="newCountry" value="Country"/>
+                                                        <div><h:outputText class="form-control" value="#{userService.userAddress.country}"> </h:outputText></div>
+                                                        <br/>
+                                                        <h:commandButton class="btn btn-primary" id="updateAddressButton" title="Update Address" label="Update Address" value="Update Address" type="Submit" action="#{userService.updateAddress()}"></h:commandButton>
+                                                    </h:form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            
+                            
+                        </div>
+                        
+                    </ui:insert>
+                
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="row">
+                
+                <div class="col-md-12 footer">
+                        
+                        <ui:insert name="footer">
+                            
+                            <nav class="navbar navbar-inverse">
+                               
+                                <div class="container">
+                                  <div class="navbar-text float-left copyright">
+                                    <p><span class="align-baseline">&copy; 2021 Web Applications &amp; Services - Adem Bencheikh</span></p>
+                                  </div>
+                                </div>
+                        
+                            </nav>
+                            
+                        </ui:insert>
+                        
+                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <h:form>
+            <h:commandScript id="submit" 
+                             name="jsFunction"
+                             action="#{logoutBean.logout()}"/>
+        </h:form>
+
+        <script>
+            function invoke()
+               {
+                    jsFunction();
+               }
+            function show(id){
+                document.getElementById(id).style.display = 'block';
+            }
+            function hide(id){
+                document.getElementById(id).style.display = 'none';
+            }
+        </script>
+    
+</html>
+

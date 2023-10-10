@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon-32x32.png']}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/fontawesome.min.css"/>
+        <h:outputStylesheet name="/css/signin.css"/>
+        <h:outputScript name="/js/jquery.min.js"/>
+        <h:outputScript name="/js/bootstrap.min.js"/>
+        <h:outputScript name="/js/bootstrap.js"/>
+        <title>PayME: Admin User Registration</title>
+    </h:head>
+    
+    
+        
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-12 menu">
+                    
+                    <ui:insert name="menu">
+                        
+                        <nav class="navbar navbar-inverse">
+                            
+                            <div class="container-fluid">
+                              <div class="navbar-header">
+                                <a class="navbar-brand" href="#">PayME</a>
+                              </div>
+
+                              <ul class="nav navbar-nav">
+                                  <li><h:link outcome="home">Home</h:link></li>
+                                <li><h:link outcome="transactions">Transactions</h:link></li>
+                                <li><h:link outcome="users">Manage Users</h:link></li>
+                                <li class="active"><h:link outcome="register">Register Users</h:link></li>
+                              </ul>
+                                
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#" onclick="invoke();"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
+                                
+                                
+                            </ul>
+                                
+                            </div>
+                            
+                        </nav>
+                        
+                    </ui:insert>
+                
+                </div>
+                
+            </div>
+            
+            <div class="row" >
+                
+                <div class="col-md-12 content-area">
+                    
+                    <div class="content">
+                    
+                        <ui:insert name="content">
+                            
+                            
+                            <div class="container" >
+                                
+                                <div class="row">
+                                    
+                                    <div class="col-sm-12">
+                                        <h:form>
+                                        <div class="col-sm-4 col-sm-offset-2" style="">
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Register new user</div>
+                                                <div class="panel-body">
+
+                                                    <h5><p>Please enter the details of the new admin you wish to register.</p></h5>
+                                                    
+                                                        <label for="fullName">Full Name:</label>
+                                                        <h:inputText class="form-control" id="fullName" label="Full Name" required="true" requiredMessage="Full name field can not be empty" title="Full Name" value="#{administratorBean.fullname}"></h:inputText>
+
+                                                        <label for="emailAddress">Email address:</label>
+                                                        <h:inputText class="form-control" id="emailAddress" label="Email Address" required="true" requiredMessage="Emaill address field can not be empty" title="Email Address" value="#{administratorBean.emailAddress}"></h:inputText>
+
+                                                        <br/>
+                                                        <label for="userName">Username:</label>
+                                                        <h:inputText class="form-control"  id="userName" label="Username" required="true" requiredMessage="Username field can not be empty" title="Username" value="#{administratorBean.username}"></h:inputText>
+
+
+                                                        <br/>
+                                                        <label for="password">Password:</label>
+                                                        <h:inputSecret class="form-control" id="password" label="Password" required="true" requiredMessage="Password field can not be empty" title="Password" value="#{administratorBean.password}"></h:inputSecret>
+
+                                                        <br/>
+                                                        <label for="confirmPassword">Confirm Password:</label>
+                                                        <h:inputSecret class="form-control" id="confirmPassword" label="Confirm Password" required="true" requiredMessage="Confirm Password field can not be empty" title="Confirm Password" value="#{administratorBean.confirmPassword}"></h:inputSecret>
+
+                                                        <br/>
+                                                        <label for="currency">Currency:</label>
+                                                        <h:selectOneMenu class="form-control" value="#{administratorBean.currency}" rendered="true">
+                                                            <f:selectItem itemValue = "" itemLabel = "Select" /> 
+                                                            <f:selectItem itemValue = "Gbp" itemLabel = "Gbp" /> 
+                                                            <f:selectItem itemValue = "Usd" itemLabel = "Usd" /> 
+                                                            <f:selectItem itemValue = "Eur" itemLabel = "Eur" />
+                                                        </h:selectOneMenu>
+
+                                                        <br/>
+                                                        <label for="groupName">Role (admins, users):</label>
+                                                        <h:inputText class="form-control" id="groupName" label="Groupname" required="true" requiredMessage="Role field can not be empty" title="Groupename" value="#{administratorBean.groupname}"></h:inputText>
+                                                        
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        
+                                        <div class="col-sm-4 " style="">
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+
+                                                    
+                                                    <label for="houseNumber">House Number:</label>
+                                                        <h:inputText class="form-control" id="houseNumber" label="House Number" required="true" requiredMessage="House Number field can not be empty" title="House Number" value="#{administratorBean.houseNumber}"></h:inputText>
+
+                                                        <label for="addressLine">Address Line:</label>
+                                                        <h:inputText class="form-control" id="addressLine" label="Address Line" required="true" requiredMessage="Address Line field can not be empty" title="Address Line" value="#{administratorBean.addressLine}"></h:inputText>
+
+                                                        <br/>
+                                                        <label for="postCode">Post Code:</label>
+                                                        <h:inputText class="form-control" id="postCode" label="postCode" required="true" requiredMessage="Post Code field can not be empty" title="Post Code" value="#{administratorBean.postCode}"></h:inputText>
+
+
+                                                        <br/>
+                                                        <label for="city">City:</label>
+                                                        <h:inputText class="form-control" id="city" label="Password" required="true" requiredMessage="City field can not be empty" title="Password" value="#{administratorBean.city}"></h:inputText>
+
+                                                        <br/>
+                                                        <label for="country:">Country:</label>
+                                                        <h:inputText class="form-control" id="country" label="Country" required="true" requiredMessage="Country field can not be empty" title="Country" value="#{administratorBean.country}"></h:inputText>
+
+                                                        <br/>
+                                                        <label for="dob">Date of Birth (YYYY-MM-DD):</label>
+                                                        <h:inputText class="form-control" id="dob" label="Date of Birth" required="true" requiredMessage="Date of Birth field can not be empty" title="Confirm Password" value="#{administratorBean.dob}"></h:inputText>
+
+                                                        <br/>
+                                                        <label for="phoneNumber">Phone Number:</label>
+                                                        <h:inputText class="form-control" id="phoneNumber" label="Phone Number" required="true" requiredMessage="Phone Number field can not be empty" title="Groupename" value="#{administratorBean.phoneNumber}"></h:inputText>
+                                                        <br/>
+                                                        <h:commandButton class="btn btn-primary" id="registerButton" title="Register" label="Register" value="Register" type="Submit" action="#{administratorBean.registerUser()}"></h:commandButton>
+
+                                                    
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        </h:form>
+                                    </div>
+                                    
+                                </div>
+                                
+                                
+                            </div>
+                            
+                        </ui:insert>
+                        
+                    </div>
+                    
+                </div>
+ 
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 footer">
+                        
+                        <ui:insert name="footer">
+                            
+                            <nav class="navbar navbar-inverse">
+                               
+                                <div class="container">
+                                  <div class="navbar-text float-left copyright">
+                                    <p><span class="align-baseline">&copy; 2021 Web Applications &amp; Services - Adem Bencheikh</span></p>
+                                  </div>
+                                </div>
+                        
+                            </nav>
+                            
+                        </ui:insert>
+                        
+                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <h:form>
+            <h:commandScript id="submit" 
+                             name="jsFunction"
+                             action="#{logoutBean.logout()}"/>
+        </h:form>
+
+        <script>
+            function invoke()
+               {
+                    jsFunction();
+               }
+        </script>
+    
+</html>
+

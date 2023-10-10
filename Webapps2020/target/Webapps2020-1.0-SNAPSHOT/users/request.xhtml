@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon-32x32.png']}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/fontawesome.min.css"/>
+        <h:outputStylesheet name="/css/signin.css"/>
+        <h:outputScript name="/js/jquery.min.js"/>
+        <h:outputScript name="/js/bootstrap.min.js"/>
+        <h:outputScript name="/js/bootstrap.js"/>
+        <title>PayME: Send Money</title>
+    </h:head>
+    
+    <h:body>
+        
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-12 menu">
+                    
+                    <ui:insert name="menu">
+                        
+                        <nav class="navbar navbar-inverse">
+                            
+                            <div class="container-fluid">
+                              <div class="navbar-header">
+                                <h:link class="navbar-brand" outcome="home">PayME</h:link>
+                              </div>
+
+                              <ul class="nav navbar-nav">
+                                  <li><h:link outcome="home">Home</h:link></li>
+                                <li class="dropdown">
+                                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Wallet
+                                  <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                      <li><h:link outcome="balance">PayME Balance</h:link></li>
+                                        <li><a href="#">Bank Accounts</a></li>
+                                  </ul>
+                                </li>
+                                <li><h:link outcome="transactions">Transactions</h:link></li>
+                                <li><h:link outcome="send">Send Money</h:link></li>
+                                <li class="active"><h:link outcome="request">Request Money</h:link></li>
+                              </ul>
+                                
+                            <ul class="nav navbar-nav navbar-right">
+                                
+                                <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-bell" ></span></a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1">Recent Notifications</a></li>
+                                            <li role="presentation" class="divider"></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><h:link outcome="transactions"><h:outputText value="#{userService.notifications[0] == '' ? 'No new notifications' : userService.notifications[0]}"></h:outputText></h:link></a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><h:link outcome="transactions"><h:outputText value="#{userService.notifications[0] == '' ? '' : userService.notifications[1]}"></h:outputText></h:link></a></li>
+                                            <li role="presentation" class="divider"></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><h:link outcome="transactions">View all transactions</h:link></a></li>
+                                        </ul>
+                                    </li>
+                                <li><h:link outcome="settings"><span class="glyphicon glyphicon-cog" ></span></h:link></li>
+                                <li><a href="#" onclick="invoke();"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
+                                
+                            </ul>
+                                
+                            </div>
+                            
+                        </nav>
+                        
+                    </ui:insert>
+                
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 content-area">
+                    
+                    <div class="content">
+                    
+                        <ui:insert name="content">
+                            
+                            <div class="container">
+                            
+                                <div class="row">
+                                    
+                                    <div class="col-sm-6 col-md-offset-4" style="">
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Request Money</div>
+                                                <div class="panel-body">
+
+                                                    <h4><p><h:outputText value="You have #{userService.totalBalance} available"></h:outputText></p></h4>
+                                                    <h6><p>Please enter the recipient email address and the amount to request.</p></h6>
+                                                    <div > 
+                                                        
+                                                        <h:form>
+                                                            <label for="recipientUsername">Username:</label>
+                                                            <h:inputText class="form-control" id="recipientUsername" label="Recipient Username" required="true" requiredMessage="Recipient Username field can not be empty" title="Recipient Username" value="#{userService.receiver}"></h:inputText>
+
+                                                            <label for="amountToSend">Amount:</label>
+                                                            <h:inputText class="form-control" id="amountToSend" label="Amount To Request" required="true" requiredMessage="Amount to request can not be empty" title="Amount to request" value="#{userService.amount}"></h:inputText>
+                                                            
+                                                            <label for="currency">Currency:</label>
+                                                            <h:selectOneMenu class="form-control" value="#{userService.currency}" rendered="true">
+                                                                <f:selectItem itemValue = "" itemLabel = "Select" /> 
+                                                                <f:selectItem itemValue = "Gbp" itemLabel = "Gbp" /> 
+                                                                <f:selectItem itemValue = "Usd" itemLabel = "Usd" /> 
+                                                                <f:selectItem itemValue = "Eur" itemLabel = "Eur" />
+                                                            </h:selectOneMenu>
+
+                                                            <br/>
+                                                            <h:commandButton style="" class="btn btn-primary" id="requestButton" title="Send" label="Send" value="Request Money" type="Submit" action="#{userService.requestMoney()}"></h:commandButton>
+                                                            
+                                                        </h:form>
+
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                </div>
+                                
+                            </div>
+                            
+                        </ui:insert>
+                        
+                    </div>
+                    
+                </div>
+ 
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 footer">
+                        
+                        <ui:insert name="footer">
+                            
+                            <nav class="navbar navbar-inverse">
+                               
+                                <div class="container">
+                                  <div class="navbar-text float-left copyright">
+                                    <p><span class="align-baseline">&copy; 2021 Web Applications &amp; Services - Adem Bencheikh</span></p>
+                                  </div>
+                                </div>
+                        
+                            </nav>
+                            
+                        </ui:insert>
+                        
+                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+        
+    </h:body>
+    <h:form>
+            <h:commandScript id="submit" 
+                             name="jsFunction"
+                             action="#{logoutBean.logout()}"/>
+        </h:form>
+    <script>
+            function invoke()
+               {
+                    jsFunction();
+               }
+        </script>
+</html>
+
+
+       
+    
+

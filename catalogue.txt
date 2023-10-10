@@ -1,0 +1,7 @@
+entity package has all the required entities.
+jsf package has beans for handelling jsf calls 
+ejb package has beans that implement buisiness logic
+resources package has the required web services 
+dao package has the required files for implementing dao pattern
+web pages contains all the xhtml required files
+every method and variable are self-documented

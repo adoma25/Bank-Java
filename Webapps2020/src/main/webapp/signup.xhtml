@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon-32x32.png']}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/fontawesome.min.css"/>
+        <h:outputStylesheet name="/css/signin.css"/>
+        <h:outputScript name="/js/jquery.min.js"/>
+        <h:outputScript name="/js/bootstrap.min.js"/>
+        <h:outputScript name="/js/bootstrap.js"/>
+        <title>PayME: Login</title>
+    </h:head>
+    <h:body>
+        
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-12 menu">
+                    
+                    <ui:insert name="menu">
+                        
+                        <nav class="navbar navbar-inverse">
+                            
+                            <div class="container-fluid">
+                              <div class="navbar-header">
+                                <a class="navbar-brand" href="#">PayME</a>
+                              </div>
+
+                              <ul class="nav navbar-nav navbar-right">
+                                  <li class="active"><h:link outcome="signup"><span class="glyphicon glyphicon-user" ></span> Sign Up</h:link></li>
+                                <li><h:link outcome="login"><span class="glyphicon glyphicon-log-in"></span> Login</h:link></li>
+                              </ul>
+                            </div>
+                            
+                        </nav>
+                        
+                    </ui:insert>
+                
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 content-area">
+                    
+                    <div class="content">
+                    
+                        <ui:insert name="content">
+                            <div class="container" >
+                                
+                                <div class="row">
+                                    
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <h4>Please fill in your details to create an account.</h4>
+                                    </div>
+                                    
+                                    <div class="col-sm-12">
+                                        <h:form>
+                                        <div class="col-sm-4 col-sm-offset-2" style="">
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+
+                                                    
+                                
+                                                    <h:outputLabel for="fullName" >Full name</h:outputLabel>
+                                                    <h:inputText class="form-control" id="fullName" label="Full Name" required="true" requiredMessage="Full name field can not be empty" title="Full Name" value="#{signupBean.fullName}"></h:inputText>
+
+
+
+                                                    <h:outputLabel for="emailAddress" >Email address</h:outputLabel>
+                                                    <h:inputText class="form-control" id="emailAddress" label="Email Address" required="true" requiredMessage="Emaill address field can not be empty" title="Email Address" value="#{signupBean.emailAddress}"></h:inputText>
+
+                                                    <h:outputLabel for="userName" >Username</h:outputLabel>
+                                                    <h:inputText class="form-control" id="userName" label="Username" required="true" requiredMessage="Username field can not be empty" title="Username" value="#{signupBean.userName}"></h:inputText>
+
+                                                    <h:outputLabel for="password" >Password</h:outputLabel>
+                                                    <h:inputSecret class="form-control" id="password" label="Password" required="true" requiredMessage="Password field can not be empty" title="Password" value="#{signupBean.userPassword}"></h:inputSecret>
+
+                                                    <h:outputLabel for="confirmPassword" >Confirm Password</h:outputLabel>
+                                                    <h:inputSecret class="form-control" id="confirmPassword" label="Confirm Password" required="true" requiredMessage="Confirm Password field can not be empty" title="Confirm Password" value="#{signupBean.userConfirmPassword}"></h:inputSecret>
+
+                                                    <h:outputLabel for="currency" >Currency</h:outputLabel>
+                                                    <h:selectOneMenu class="form-control" value="#{signupBean.currency}" rendered="true">
+                                                        <f:selectItem itemValue = "" itemLabel = "Select" /> 
+                                                        <f:selectItem itemValue = "Gbp" itemLabel = "Gbp" /> 
+                                                        <f:selectItem itemValue = "Usd" itemLabel = "Usd" /> 
+                                                        <f:selectItem itemValue = "Eur" itemLabel = "Eur" />
+                                                    </h:selectOneMenu>
+                                                    
+                                                    <br/>
+                                                        <label for="dob">Date of Birth (YYYY-MM-DD):</label>
+                                                        <h:inputText class="form-control" id="dob" label="Date of Birth" required="true" requiredMessage="Date of Birth field can not be empty" title="Confirm Password" value="#{signupBean.dob}"></h:inputText>
+                                                        
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        
+                                        <div class="col-sm-4 " style="">
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+
+                                                    
+                                                    <label for="houseNumber">House Number:</label>
+                                                        <h:inputText class="form-control" id="houseNumber" label="House Number" required="true" requiredMessage="House Number field can not be empty" title="House Number" value="#{signupBean.houseNumber}"></h:inputText>
+
+                                                        <label for="addressLine">Address Line:</label>
+                                                        <h:inputText class="form-control" id="addressLine" label="Address Line" required="true" requiredMessage="Address Line field can not be empty" title="Address Line" value="#{signupBean.addressLine}"></h:inputText>
+
+                                                        <br/>
+                                                        <label for="postCode">Post Code:</label>
+                                                        <h:inputText class="form-control" id="postCode" label="postCode" required="true" requiredMessage="Post Code field can not be empty" title="Post Code" value="#{signupBean.postCode}"></h:inputText>
+
+
+                                                        <br/>
+                                                        <label for="city">City:</label>
+                                                        <h:inputText class="form-control" id="city" label="Password" required="true" requiredMessage="City field can not be empty" title="Password" value="#{signupBean.city}"></h:inputText>
+
+                                                        <br/>
+                                                        <label for="country:">Country:</label>
+                                                        <h:inputText class="form-control" id="country" label="Country" required="true" requiredMessage="Country field can not be empty" title="Country" value="#{signupBean.country}"></h:inputText>
+
+                                                        <br/>
+                                                        <label for="phoneNumber">Phone Number:</label>
+                                                        <h:inputText class="form-control" id="phoneNumber" label="Phone Number" required="true" requiredMessage="Phone Number field can not be empty" title="Groupename" value="#{signupBean.phoneNumber}"></h:inputText>
+                                                        
+
+                                                    
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                            
+                                            <div class="col-sm-4 col-sm-offset-4">
+                                                <div class="checkbox mb-3">
+                                                <label>
+                                                    <input type="checkbox" value="remember-me"/> I Agree to <h:link>terms</h:link> and conditions.
+                                                </label>
+
+                                              </div>
+
+                                              <h:commandButton class="btn btn-lg btn-primary btn-block" id="signUp" title="Sign-Up" label="Sing-Up" value="Sign up" type="Submit" action="#{signupBean.signUp()}"></h:commandButton>
+
+                                              <h:commandButton class="btn btn-lg btn-primary btn-block" id="alt_back_button" title="Go Home" label="Go Home" value="Go Home" action="index"></h:commandButton>
+                                            </div>
+                                            
+                                        </h:form>
+                                    </div>
+                                    
+                                </div>
+                                
+                                
+                            </div>
+                            
+                        </ui:insert>
+                        
+                    </div>
+                    
+                </div>
+ 
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-md-12 footer">
+                        
+                        <ui:insert name="footer">
+                            
+                            <nav class="navbar navbar-inverse">
+                               
+                                <div class="container">
+                                  <div class="navbar-text float-left copyright">
+                                    <p><span class="align-baseline">&copy; 2021 Web Applications &amp; Services - Adem Bencheikh</span></p>
+                                  </div>
+                                </div>
+                        
+                            </nav>
+                            
+                        </ui:insert>
+                        
+                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+        
+    </h:body>
+
+</html>
+
